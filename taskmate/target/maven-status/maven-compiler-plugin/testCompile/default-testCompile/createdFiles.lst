@@ -1,0 +1,3 @@
+com\taskmate\handler\TaskMateRequestHandlerTest.class
+com\taskmate\utils\CommonUtilsTest.class
+com\taskmate\utils\jwt\JwtProviderTest.class

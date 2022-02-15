@@ -1,0 +1,37 @@
+AWS Access Key ID [****************]: myFakeId
+AWS Secret Access Key [****************]: myFakeSecreteAccessKey
+Default region name [None]: us-east-1
+
+java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -port 8010 -sharedDb
+
+aws dynamodb list-tables --endpoint-url http://localhost:8010
+
+aws dynamodb describe-table --table-name users --endpoint-url http://localhost:8010
+
+AWS_SECRET_ACCESS_KEY 
+
+aws dynamodb create-table --table-name users --attribute-definitions AttributeName=userId,AttributeType=S AttributeName=userName,AttributeType=S --key-schema AttributeName=userId,KeyType=HASH AttributeName=userName,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 --table-class STANDARD --endpoint-url http://localhost:8010
+
+aws dynamodb create-table --table-name Music --attribute-definitions AttributeName=Artist,AttributeType=S AttributeName=SongTitle,AttributeType=S --key-schema AttributeName=Artist,KeyType=HASH AttributeName=SongTitle,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 --table-class STANDARD
+
+aws dynamodb query --table-name Music --key-conditions file://key-conditions.json
+
+aws dynamodb put-item --table-name Music --item file://music.json --endpoint-url http://localhost:8010 --return-consumed-capacity TOTAL
+
+aws dynamodb get-item --consistent-read --table-name Music --key file://get-music.json --endpoint-url http://localhost:8010
+
+aws dynamodb execute-statement --statement "SELECT * FROM Music WHERE Artist='No One You Know'" --endpoint-url http://localhost:8010
+
+aws dynamodb execute-statement --statement "INSERT INTO Music VALUE {'Artist':'No One You Know','SongTitle':'Call Me Today', 'AlbumTitle':'Somewhat Famous', 'Awards':'1'}"
+
+aws dynamodb execute-statement --statement "SELECT * FROM Music WHERE Artist='Acme Band' AND SongTitle='Happy Day'" --endpoint-url http://localhost:8010
+
+aws dynamodb execute-statement --statement "SELECT * FROM users WHERE userName='admin'" --endpoint-url http://localhost:8010
+
+aws dynamodb put-item --table-name users --item file://user-create.json --endpoint-url http://localhost:8010 --return-consumed-capacity TOTAL
+
+30vmsg		4pgfsu
+
+sam local invoke TaskMateFunction --event events/register.json
+sam local invoke TaskMateFunction --event events/login.json
+sam local invoke TaskMateFunction --event events/removeuser.json

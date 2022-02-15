@@ -1,0 +1,9 @@
+{
+	"config": {
+		"register.user": "UserService",
+		"login.user": "UserService",
+		"remove.user": "UserService",
+		"jwt.exp.milis": "120",
+		"jwt.base64.key":"VGhpc0lzU2VjcmV0Rm9yVGFza21hdGVMYW1iZGFBcHBsaWNhdGlvblRvU2lnbkpXVHNGb3JTZWN1cmVBbGdvcml0aG0="
+	}
+}

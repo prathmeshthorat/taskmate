@@ -1,0 +1,58 @@
+{
+    "body": "{\"email\":\"testuser1@taskmate.com\"}",
+	"invoker":"",
+	"action":"remove.user",
+    "path": "/api/taskmate",
+    "httpMethod": "POST",
+    "queryStringParameters": {
+      "foo": "bar"
+    },
+    "pathParameters": {
+      "proxy": "/api/taskmate"
+    },
+    "stageVariables": {
+      "baz": "qux"
+    },
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+      "Accept-Encoding": "gzip, deflate, sdch",
+      "Accept-Language": "en-US,en;q=0.8",
+      "Cache-Control": "max-age=0",
+      "CloudFront-Is-Desktop-Viewer": "true",
+      "Host": "1234567890.execute-api.us-east-1.amazonaws.com",
+      "User-Agent": "Custom User Agent String",
+      "X-Forwarded-For": "127.0.0.1, 127.0.0.2",
+      "X-Forwarded-Port": "443",
+      "X-Forwarded-Proto": "https",
+	  "x-application-id": "taskmate",
+	  "x-country-code": "IN",
+	  "x-id-token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkB0YXNrbWF0ZS5jb20iLCJpYXQiOjE2NDQ5NDYyMDQsImV4cCI6MTY0NDk0NzQwNCwiZ3JvdXAiOiJUQVNLTUFURV9BRE1JTiJ9.V--8Dw7PL2WFFIuoNJDdUxNlTmIt6AMAiE-QnjhVY4du6Eg1HA1ZBxa_GefeAGa8n6TyZep216h9nWAbXj967A"
+    },
+    "requestContext": {
+      "accountId": "123456789012",
+      "resourceId": "123456",
+      "stage": "prod",
+      "requestId": "c6af9ac6-7b61-11e6-9a41-93e8deadbeef",
+      "requestTime": "09/Apr/2015:12:34:56 +0000",
+      "requestTimeEpoch": 1428582896000,
+      "identity": {
+        "cognitoIdentityPoolId": null,
+        "accountId": null,
+        "cognitoIdentityId": null,
+        "caller": null,
+        "accessKey": null,
+        "sourceIp": "127.0.0.1",
+        "cognitoAuthenticationType": null,
+        "cognitoAuthenticationProvider": null,
+        "userArn": null,
+        "userAgent": "Custom User Agent String",
+        "user": null
+      },
+      "path": "/api/taskmate",
+      "resourcePath": "/{proxy+}",
+      "httpMethod": "POST",
+      "apiId": "1234567890",
+      "protocol": "HTTP/1.1"
+    }
+  }
+  
