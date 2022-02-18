@@ -1,5 +1,5 @@
 {
-    "body": "{\"email\":\"testuser1@taskmate.com\"}",
+    "body": "{\"email\":\"testuser1@taskmate.com\",\"action\":\"remove.user\"}",
 	"invoker":"",
 	"action":"remove.user",
     "path": "/api/taskmate",

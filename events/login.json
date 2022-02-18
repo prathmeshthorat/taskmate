@@ -1,5 +1,5 @@
 {
-    "body": "{\"email\":\"admin@taskmate.com\",\"password\":\"password\"}",
+    "body": "{\"email\":\"admin@taskmate.com\",\"password\":\"password\",\"action\":\"login.user\"}",
 	"invoker":"",
 	"action":"login.user",
     "path": "/api/taskmate",

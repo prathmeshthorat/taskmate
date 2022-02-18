@@ -8,8 +8,6 @@ import java.util.UUID;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
-import com.fasterxml.jackson.annotation.Nulls;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.taskmate.domain.User;
 import com.taskmate.model.GatewayProxyRequest;
@@ -53,7 +51,7 @@ public class UserService implements TaskmateService {
 			response = remove(request);
 			break;
 		default:
-			response = new GatewayResponse("Invalid subaction.", headers, 200);
+			response = new GatewayResponse(Constants.INVALID_SUB_ACTION, headers, 200);
 			break;
 		}
 
@@ -69,7 +67,7 @@ public class UserService implements TaskmateService {
 				if (user.getEmail() != null) {
 					User removeUser = fetchUserByEmailId(user.getEmail());
 					dbMapper.delete(removeUser);
-					body = String.format("%s removed from user table.", user.getEmail());
+					body = String.format(Constants.REMOVE_USER_STATUS, user.getEmail());
 				}
 			} catch (Exception e) {
 				System.out.println("Printing error:: " + e.toString());
@@ -93,7 +91,7 @@ public class UserService implements TaskmateService {
 					headers.put(Constants.X_ID_TOKEN, token);
 					body = "Login successful.";
 				} else {
-					body = "Email or Password is incorrect.";
+					body = Constants.INVALID_EMAIL_PASSWORD;
 				}
 				CommonUtils.clearPassword(registeredUser);
 
