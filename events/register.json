@@ -1,5 +1,5 @@
 {
-    "body": "{\"firstName\":\"support\",\"lastName\":\"user\",\"userName\":\"supportuser1\",\"email\":\"supportuser1@taskmate.com\",\"password\":\"password\",\"userType\":\"SUPPORT_EMPLOYEE\"}",
+    "body": "{\"firstName\":\"support\",\"lastName\":\"user\",\"userName\":\"supportuser1\",\"email\":\"supportuser1@taskmate.com\",\"password\":\"password\",\"userType\":\"SUPPORT_EMPLOYEE\",\action\":\"register.user\"}",
 	"invoker":"",
 	"action":"register.user",
     "path": "/api/taskmate",

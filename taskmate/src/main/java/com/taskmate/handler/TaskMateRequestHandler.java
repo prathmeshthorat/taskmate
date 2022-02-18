@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.taskmate.component.DaggerTaskMateComponent;
 import com.taskmate.exception.BusinessException;
@@ -35,28 +37,35 @@ public class TaskMateRequestHandler extends LambdaFunctionProcessor {
 	protected GatewayResponse processRequest(GatewayProxyRequest request, RequestContext context)
 			throws BusinessException {
 		Map<String, String> headers = getHeaders();
-		getConfiguration(request, context);
-		GatewayResponse response;
-		System.out.println(String.format("\n %s processing GatewayRequest.", this.getClass().getName()));
-		String action = config.get(Constants.ACTION);
-		context.setSubAction(config.get(Constants.SUB_ACTION));
-		switch (action) {
-		case "user":
-			TaskmateService service = factory.getTaskmateLamdaService(mapper, context, config.get(Constants.SERVICE));
-			response = service.process(request, context);
-			break;
+		GatewayResponse response = null;
+		try {
+			getConfiguration(request, context);
 
-		default:
-			response = new GatewayResponse("Action is not set in header.", headers, 400);
-			break;
+			System.out.println(String.format("\n %s processing GatewayRequest.", this.getClass().getName()));
+			String action = config.get(Constants.ACTION);
+			context.setSubAction(config.get(Constants.SUB_ACTION));
+			switch (action) {
+			case "user":
+				TaskmateService service = factory.getTaskmateLamdaService(mapper, context,
+						config.get(Constants.SERVICE));
+				response = service.process(request, context);
+				break;
+
+			default:
+				response = new GatewayResponse("Action is not set in header.", headers, 400);
+				break;
+			}
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
 
 		return response;
 	}
 
-	private void getConfiguration(GatewayProxyRequest request, RequestContext context) throws BusinessException {
-		if (null != request.getAction()) {
-			config = CommonUtils.getConfig(request.getAction());
+	public void getConfiguration(GatewayProxyRequest request, RequestContext context)
+			throws BusinessException, JsonMappingException, JsonProcessingException {
+		if (null != request.getBody()) {
+			config = CommonUtils.getConfig(mapper.readTree(request.getBody()).get(Constants.ACTION).asText());
 		}
 	}
 

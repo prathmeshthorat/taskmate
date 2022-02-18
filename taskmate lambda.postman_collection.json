@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "14013d21-2baf-4069-a162-2912f367d37d",
+		"name": "taskmate lambda",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user-login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-application-id",
+						"value": "taskmate",
+						"type": "text"
+					},
+					{
+						"key": "x-country-code",
+						"value": "IN",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\":\"login.user\",\r\n    \"email\": \"admin@taskmate.com\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/taskmate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"taskmate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-application-id",
+						"value": "taskmate",
+						"type": "text"
+					},
+					{
+						"key": "x-country-code",
+						"value": "IN",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"test\",\r\n    \"lastName\": \"user\",\r\n    \"userName\": \"supportuser1\",\r\n    \"email\": \"user2@taskmate.com\",\r\n    \"password\": \"password\",\r\n    \"userType\": \"USER\",\r\n    \"action\": \"register.user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/taskmate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"taskmate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-remove",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-application-id",
+						"value": "taskmate",
+						"type": "text"
+					},
+					{
+						"key": "x-country-code",
+						"value": "IN",
+						"type": "text"
+					},
+					{
+						"key": "x-id-token",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkB0YXNrbWF0ZS5jb20iLCJpYXQiOjE2NDUxMTcxMTIsImV4cCI6MTY0NTExODMxMiwiZ3JvdXAiOiJUQVNLTUFURV9BRE1JTiJ9.qZgrzyB41HWwswOC12lM994-vjd3aSz_4Iy2w1aaCaCSXXwfxtg3D6lcTMku2P7az38N0SlWHCCwYNwAYESabA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"user1@taskmate.com\",\r\n    \"action\": \"remove.user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/taskmate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"taskmate"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "x-application-id",
+			"value": "taskmate"
+		},
+		{
+			"key": "x-country-code",
+			"value": "IN"
+		}
+	]
+}

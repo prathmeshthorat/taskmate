@@ -2,10 +2,10 @@ package com.taskmate.utils;
 
 public class Constants {
 
-	public static final String X_APPLICATION_ID = "x-application-id";
-	public static final String X_COUNTRY_CODE = "x-country-code";
-	public static final String X_REQUEST_ID = "x-request-id";
-	public static final String X_ID_TOKEN = "x-id-token";
+	public static final String X_APPLICATION_ID = "X-Application-Id";
+	public static final String X_COUNTRY_CODE = "X-Country-Code";
+	public static final String X_REQUEST_ID = "X-Request-Id";
+	public static final String X_ID_TOKEN = "X-Id-Token";
 	public static final String ACTION = "action";
 	public static final String SUB_ACTION = "subaction";
 	public static final String SERVICE = "service";

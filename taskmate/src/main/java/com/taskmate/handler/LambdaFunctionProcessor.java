@@ -42,7 +42,7 @@ public abstract class LambdaFunctionProcessor implements RequestHandler<GatewayP
 		String s = new StringBuilder("## ").append(this.getClass().getSimpleName()).append(".").append("handleRequest")
 				.toString();
 		LambdaLogger logger = context.getLogger();
-		logger.log("\n " + s + " Entrypoint.");
+		logger.log("\n " + s + " Entrypoint ## "+request.toString());
 		getUserInfo(request, context);
 		RequestContext requestContext = request.getRequestContext();
 		requestContext.setRequestId(context.getAwsRequestId());
@@ -57,7 +57,7 @@ public abstract class LambdaFunctionProcessor implements RequestHandler<GatewayP
 			logger.log("\n Request valid. " + request.toString());
 			try {
 				response = processRequest(request, requestContext);
-			} catch (BusinessException e) {
+			} catch (Exception e) {
 				logger.log(e.getMessage());
 				response = new GatewayResponse("Internal Server Error. " + e.getMessage(), getHeaders(), 500);
 			}
@@ -66,7 +66,7 @@ public abstract class LambdaFunctionProcessor implements RequestHandler<GatewayP
 			}
 
 		} else {
-			response = new GatewayResponse("Invalid/Malformed Request.", getHeaders(), 400);
+			response = new GatewayResponse("Invalid-Malformed Request.", getHeaders(), 400);
 		}
 		return response;
 	}

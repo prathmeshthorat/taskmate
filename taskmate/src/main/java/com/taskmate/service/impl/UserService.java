@@ -116,6 +116,7 @@ public class UserService implements TaskmateService {
 			if (null == fetchUserByEmailId(user.getEmail())) {
 				user.setUserId(UUID.randomUUID().toString());
 				user.setPassword(CommonUtils.hashpw(user.getPassword()));
+				user.setAction(null);
 				System.out.println("Registering user with userId :: " + user.getUserId());
 				dbMapper.save(user);
 				CommonUtils.clearPassword(user);
